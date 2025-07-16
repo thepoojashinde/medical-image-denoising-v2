@@ -1,0 +1,52 @@
+# Ignore virtual environments
+.venv/
+venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE settings (PyCharm, VS Code)
+.idea/
+.vscode/
+
+# Dataset folders and large medical image formats
+dataset/
+data/
+LIDC-IDRI/
+*.dcm
+*.npy
+*.mat
+*.h5
+*.nii
+*.nii.gz
+*.zip
+*.tar.gz
+
+# Model checkpoints & weights
+checkpoints/
+models/
+*.hdf5
+*.pt
+*.pth
+
+# Logs and results
+logs/
+runs/
+*.log
+*.csv
+*.xlsx
+*.json
+
+# Outputs and visualizations
+outputs/
+results/
+*.png
+*.jpg
+
+# OS-specific
+.DS_Store
+Thumbs.db
