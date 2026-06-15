@@ -13,3 +13,8 @@ result/
 # System files
 .DS_Store
 .idea/
+
+__pycache__/
+*.pyc
+result_dwt/
+result_dwt_v2/
