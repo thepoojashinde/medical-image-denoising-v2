@@ -71,8 +71,9 @@ def denoise_image(model, img):
 
 def load_trained_model():
     model_path = os.path.join(
-        os.path.dirname(__file__),
-        "unet_dwt_v4_model.keras"
+          os.path.dirname(__file__),
+          "model",
+          "unet_dwt_v4_model.keras"
     )
 
     model = load_model(model_path)

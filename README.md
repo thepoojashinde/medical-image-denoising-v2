@@ -1,41 +1,152 @@
-# Medical Image Denoising using DWT and U-Net
+# 🩺 Medical Image Denoising using DWT + U-Net
 
-## Overview
+An interactive deep learning application for denoising low-dose CT images using a **4-Channel U-Net** combined with **Discrete Wavelet Transform (DWT)**. The application supports **DICOM**, **PNG**, and **JPG** images and provides real-time denoising through an intuitive Streamlit interface.
 
-This project presents a deep learning approach for medical image denoising using Discrete Wavelet Transform (DWT) and a modified 4-channel U-Net architecture. The model is trained on CT scan images from the LIDC-IDRI dataset with synthetically added Gaussian noise.
+---
 
-## Features
+## 📸 Application Preview
 
-- DWT-based preprocessing
-- Custom 4-channel U-Net architecture
-- Comparison with BM3D, DnCNN, and ResUNet
-- Performance evaluation using:
-  - PSNR
-  - SSIM
-  - FSIM
-  - MSE
+### Home
 
-## Dataset
+![Home](assets/homepage.png)
 
-- LIDC-IDRI CT Scan Dataset
+### Demo Mode
 
-## Technologies
+![Demo](assets/demo_mode.png)
 
-- Python
-- TensorFlow / Keras
-- OpenCV
-- PyWavelets
-- pydicom
-- NumPy
-- Matplotlib
+### Output
 
-## Repository Structure
+![Output](assets/output.png)
 
-- Medical_Image_Denoising_DWT_UNet.ipynb — Complete training pipeline
-- train_dwt_unet.py — Training script
-- unet_model_4ch.py — Proposed model architecture
-- requirements.txt — Required dependencies
+## ✨ Features
 
-## Future Work
+- 📁 Upload CT scans in DICOM (.dcm), PNG or JPG format
+- 🌊 Haar Wavelet (DWT) preprocessing
+- 🧠 4-Channel U-Net based denoising
+- 🎛️ Demo Mode with adjustable Gaussian noise
+- 👀 Side-by-side comparison of Original, Noisy and Denoised images
+- 📥 Download denoised output
+- 🌐 Interactive Streamlit web application
 
-- Deploy the model using Streamlit for real-time CT image denoising.
+---
+
+## 🏗️ Project Pipeline
+
+```
+CT Scan
+    │
+    ▼
+Image Preprocessing
+    │
+    ▼
+Discrete Wavelet Transform (Haar)
+    │
+    ▼
+LL │ LH │ HL │ HH
+    │
+    ▼
+4-Channel U-Net
+    │
+    ▼
+Predicted Wavelet Coefficients
+    │
+    ▼
+Inverse DWT
+    │
+    ▼
+Denoised CT Image
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Language | Python |
+| Deep Learning | TensorFlow, Keras |
+| Computer Vision | OpenCV |
+| Medical Imaging | PyDICOM |
+| Wavelet Processing | PyWavelets |
+| Data Processing | NumPy |
+| Interface | Streamlit |
+
+---
+
+## 📂 Repository Structure
+
+```text
+medical-image-denoising-v2/
+
+├── app.py
+├── utils.py
+├── requirements.txt
+├── README.md
+
+├── model/
+│   └── unet_dwt_v4_model.keras
+
+├── notebooks/
+│   └── Medical_Image_Denoising_DWT_UNet.ipynb
+
+├── assets/
+
+└── sample_images/
+```
+
+---
+
+## 🏗️ Model Architecture
+
+<p align="center">
+  <img src="assets/architecture.png" width="1000">
+</p>
+
+## 🚀 Getting Started
+
+Clone the repository
+
+```bash
+git clone https://github.com/thepoojashinde/medical-image-denoising-v2.git
+
+cd medical-image-denoising-v2
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 📊 Supported Input Formats
+
+- DICOM (.dcm)
+- PNG
+- JPG / JPEG
+
+---
+
+## 📈 Future Improvements
+
+- Performance metrics (PSNR, SSIM, MSE)
+- Before/After comparison slider
+- Batch image denoising
+- Multiple denoising models
+- Cloud deployment
+
+---
+
+## 👩‍💻 Author
+
+**Pooja Shinde**
+
+B.Tech Computer Science Engineering  
+MANIT Bhopal
