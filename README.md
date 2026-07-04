@@ -144,6 +144,10 @@ streamlit run app.py
 
 ---
 
+# 🩺 Medical Image Denoising using DWT + U-Net
+
+🚀 **Live Demo:[https://YOUR-STREAMLIT-LINK.streamlit.app](https://medical-image-denoising-v2-dmibhdhsmfrywz3enp6rnf.streamlit.app/)
+
 ## 👩‍💻 Author
 
 **Pooja Shinde**
