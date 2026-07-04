@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import pydicom
 import pywt
+import os
+
 from PIL import Image
 from tensorflow.keras.models import load_model
 
@@ -68,7 +70,12 @@ def denoise_image(model, img):
     return denoised
 
 def load_trained_model():
-    model = load_model("unet_dwt_v4_model.keras")
+    model_path = os.path.join(
+        os.path.dirname(__file__),
+        "unet_dwt_v4_model.keras"
+    )
+
+    model = load_model(model_path)
     return model
 
 

@@ -1,5 +1,7 @@
 import streamlit as st
 import numpy as np
+import io
+from PIL import Image
 
 from utils import (
     load_dicom,
@@ -44,8 +46,11 @@ if demo_mode:
         step=0.01
     )
 
+
+
 if uploaded_file is not None:
 
+    # Load image
     file_extension = uploaded_file.name.split(".")[-1].lower()
 
     if file_extension == "dcm":
@@ -53,33 +58,64 @@ if uploaded_file is not None:
     else:
         original = load_image(uploaded_file)
 
+    # Add optional Gaussian noise
     noisy = original.copy()
 
     if demo_mode:
         noisy = add_gaussian_noise(original, std=noise_std)
 
-    col1, col2 = st.columns(2)
+    # Create layout
+    col1, col2, col3 = st.columns(3)
 
+    # Show uploaded image
     with col1:
         st.subheader("Uploaded Image")
-        st.image(original, clamp=True)
-
-    with col2:
-        st.subheader("Input to Model")
-        st.image(noisy, clamp=True)
-
-    st.markdown("---")
-
-    if st.button("🧠 Denoise Image"):
-
-        with st.spinner("Running U-Net model..."):
-
-            denoised = denoise_image(model, noisy)
-
-        st.subheader("Denoised Image")
-
         st.image(
-            denoised,
+            original,
             clamp=True,
             use_container_width=True
         )
+
+    # Show model input
+    with col2:
+        if demo_mode:
+            st.subheader("Noisy Input")
+        else:
+            st.subheader("Input to Model")
+
+        st.image(
+            noisy,
+            clamp=True,
+            use_container_width=True
+        )
+
+    # Button
+    if st.button("🧠 Denoise Image"):
+
+        with st.spinner("Running U-Net model..."):
+            denoised = denoise_image(model, noisy)
+
+        with col3:
+            st.subheader("Denoised Image")
+
+            st.image(
+                denoised,
+                clamp=True,
+                use_container_width=True
+            )
+
+            # Download button
+            denoised_uint8 = (denoised * 255).astype(np.uint8)
+            pil_image = Image.fromarray(denoised_uint8)
+
+            buffer = io.BytesIO()
+            pil_image.save(buffer, format="PNG")
+
+            st.download_button(
+                label="📥 Download Denoised Image",
+                data=buffer.getvalue(),
+                file_name="denoised_ct_scan.png",
+                mime="image/png"
+            )
+
+    
