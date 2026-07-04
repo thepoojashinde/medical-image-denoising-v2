@@ -8,15 +8,15 @@ An interactive deep learning application for denoising low-dose CT images using 
 
 ### Home
 
-![Home](assets/homepage.png)
+![Home](assets/homepage.jpg)
 
 ### Demo Mode
 
-![Demo](assets/demo_mode.png)
+![Demo](assets/demo.jpg)
 
 ### Output
 
-![Output](assets/output.png)
+![Output](assets/output.jpg)
 
 ## ✨ Features
 
