@@ -13,3 +13,5 @@ tqdm==4.67.1
 h5py==3.13.0
 bm3d==4.0.3
 bm4d==4.2.5
+streamlit
+Pillow
